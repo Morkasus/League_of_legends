@@ -85,6 +85,7 @@ module.exports = class Statistics {
 
     }
 
+    //git sort game function
     function sortArray(array){
     	array.sort(function (a, b) {
 		  if (a.eventId > b.eventId) {
