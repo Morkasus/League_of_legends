@@ -4,7 +4,6 @@
         <meta charset="utf-8">
         <meta name="viewport" width="device-width" initial-scale="1">
         <title>League of legends</title>
-        <base href="/" />
         <!-- Google fonts -->
         <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
@@ -15,16 +14,16 @@
         
 
     </head>
-    <body ng-app="mySite" ng-controller="mainCtrl as main">
+    <body ng-app="LeagueOfLegends" ng-controller="mainCtrl as main">
         <div data-ng-controller="mainCtrl" data-ng-init="init()"></div>
         <!--  HEADER  -->
         <header class="subHeader" id="subHeader">
            
             <main-navbar></main-navbar>
-            <header-index ng-show="isActive(1)"></header-index>
+            <header-feed ng-show="isActive(1)"></header-feed>
             <header-protfolio ng-show="isActive(2)"></header-protfolio>
             <header-resume ng-show="isActive(3)"></header-resume>
-            <header-contact ng-show="isActive(4)"></header-contact>
+            <header-login ng-show="isActive(4)"></header-login>
             
         </header>
         
@@ -66,16 +65,15 @@
         <!-- angular controllers -->
         <script src="controllers/mainCtrl.js"></script>
         <script src="controllers/loginCtrl.js"></script>
-        <script src="controllers/resumeCtrl.js"></script> 
+        <script src="controllers/eventCtrl.js"></script> 
         <!-- angular directives --> 
-        <script src="directives/header-index.js"></script>
+        <script src="directives/header-feed.js"></script>
         <script src="directives/header-resume.js"></script>
-        <script src="directives/header-contact.js"></script>
+        <script src="directives/header-login.js"></script>
         <script src="directives/header-protfolio.js"></script>
         <script src="directives/login.js"></script>
         <script src="directives/signup.js"></script>
         <script src="directives/navbar.js"></script>
         <!-- scripts -->
-        <script src="js/script.js"></script>
     </body>
 </html>

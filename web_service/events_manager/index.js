@@ -57,29 +57,30 @@ module.exports = class EventsManager {
                 }
                 console.log(users);
                 console.log(users[0].games.length);
-                for(i=0; i<users.length; i++) {
-                    if(users[i].games)
-                    users[i].games.push(eventId);
-                    users[i].save();
-                }
-            });
-            gameManager.startGame(event.players, eventId, function(result) {
-                var newGameResult = new Game(result);
-                newGameResult.save(function(err, game) {
-                    if (err) {
-                        status = "failed";
-                        msg = "failed: can't save the game result";
-                    }
-                    //console.log(game);
-                    gameRes["status"] = status;
-                    gameRes["message"] = msg;
-                    //UPDATE THE USERS!!! AND CALLBACK
-                    //GET ALL USERS THETS IN 
-                    callback(gameRes);
+                gameManager.startGame(event.players, eventId, function(result) {
+                    var newGameResult = new Game(result);
+                    newGameResult.save(function(err, game) {
+                        if (err) {
+                            status = "failed";
+                            msg = "failed: can't save the game result";
+                        } else {
+                            for(var i=0; i<users.length; i++) {
+                                if(result.winTeam.indexOf(users[i].userName) > -1) {
+                                    users[i].wins++;
+                                } else  users[i].loses++;
+                                if(users[i].games.indexOf(eventId) == -1) users[i].games.push(eventId);
+                                users[i].save();
+                            }
+                        }
+                        gameRes["status"] = status;
+                        gameRes["message"] = msg;
+                        callback(gameRes);
+                    });
                 });
             });
         });
     }
+    
     
     createEvent(eventName, location, description, callback) {
         _eventID++;
@@ -106,6 +107,7 @@ module.exports = class EventsManager {
             callback(res);
         });
     }
+    
     
     hideEvent(eventId, callback) {
         var res = {};

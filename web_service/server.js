@@ -148,6 +148,7 @@ app.get('/leaveevent/:eventId/:userName', function(req, res){
 app.get('/showachievements/:userName', function(req, res) {
     console.log("show achievements url in actions");
     var userName = req.params.userName;
+    if(userName == "admin") res.json({status: false});
     statistics.showAchievements(userName, function (response) {
         console.log("res : " + response);
         res.json(response);

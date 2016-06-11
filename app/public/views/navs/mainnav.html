@@ -15,23 +15,23 @@
         </section>
         <ul class="nav navbar-nav navbar-right collapse navbar-collapse">
             <li ng-class="{ active:active === 1 }">
-                <a href="#/index" ng-click="changeActive(1)" ng-show="isLogedIn">
+                <a href="#/index" ng-click="showAchivements(userName)" ng-show="isLogedIn && !isAdmin">
                 FEED</a>
             </li>
             <li ng-class="{ active:active === 2 }">
-                <a href="#/protfolio" ng-click="changeActive(2)" ng-show="isLogedIn">
+                <a href="#/achivements" ng-click="changeActive(2)" ng-show="isLogedIn">
                 ACHIVEMENT</a>
             </li>
             <li ng-class="{ active:active === 3 }">
-                <a href="#/resume" ng-click="changeActive(3)" ng-show="isLogedIn">
+                <a href="#/events" ng-click="showEvents()" ng-show="isLogedIn">
                 EVENTS</a>
             </li>
             <li ng-class="{ active:active === 4 }">
-                <a href="#/contact" ng-click="changeActive(4)" ng-show="!isLogedIn">
+                <a href="#/login" ng-click="changeActive(4)" ng-show="!isLogedIn">
                 LOGIN</a>
             </li>
             <li ng-class="{ active:active === 5 }">
-                <a href="#/contact" ng-click="logout()" ng-show="isLogedIn">
+                <a href="#/logout" ng-click="logout()" ng-show="isLogedIn">
                 LOGOUT</a>
             </li>
         </ul>

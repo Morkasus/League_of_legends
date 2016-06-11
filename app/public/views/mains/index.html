@@ -1,38 +1,52 @@
-<div class="main" id="briefBackground" ng-controller="mainCtrl as main">
-    <div class="container text-center background">
-    <h2>A brief background</h2>
-        <p>
-            Hey my name is Mor Kasus. I'm 24 years old , from Gadera.
-            I'm a web site builder and creative designer.My passion for developing WEB
-            or any other gaming area combines two of my biggest loves: art and technology.
-            Today, I'm third year student in software engineering at Shenkar College of Engineering 
-            and Design. 
-            In my free time, you can find me leanrning new thing and Work out at the gym.
-        </p>
-    </div>
-</div>
-<div class="protfolio">
-    <div class="container text-center">
-        <h2>My latest projects</h2>
-        <div class="col-md-4">
-            <div class="Project">
-                <span class="projectName">website 1</span>
-                <p class="works">View Project</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="Project">
-                <section class=""></section>
-                <span class="projectName">website 2</span>
-                <p class="works">View Project</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="Project">
-                <span class="projectName">website3</span>
-                <p class="works">View Project</p>
-            </div>
-        </div>
-        <a href="#/protfolio" class="allProjectLink" ng-click="main.changeActive(2)"><span class="buttons">View all projects</span></a>
+<div class="container text-center contactMe" ng-controller="eventCtrl">
+    <div class="col-md-4 col-md-offset-4 contactPlace">
+        <section class="events" ng-show="!isAdmin">
+            <section class="event">
+                <h1>{{userName}}</h1>
+                <p>wins: {{feed.userWin}}</p>
+                <p>loses: {{feed.userLoses}}</p>
+                <hr>
+                <h3>Last Game</h3>
+                <section ng-if="feed.lastGame">
+                    <p>win score: {{feed.lastGame.winScore}}</p>
+                    <p>lose score: {{feed.lastGame.loseScore}}</p>
+                    <h5>Win Team</h5>
+                    <p ng-repeat="user in feed.lastGame.winTeam">{{user}}</p>
+                    <h5>Loss Team</h5>
+                    <p ng-repeat="user in feed.lastGame.loseTeam">{{user}}</p>                       
+                </section>
+                <p ng-if="!feed.lastGame">No games played</p>         
+                <br>
+                <hr>
+                <h3>Last Victory</h3>
+                <section ng-if="feed.lastVictory">
+                    <p>win score: {{feed.lastVictory.winScore}}</p>
+                    <p>lose score: {{feed.lastVictory.loseScore}}</p>
+                    <h5>Win Team</h5>
+                    <p ng-repeat="user in feed.lastVictory.winTeam">{{user}}</p>
+                    <h5>Loss Team</h5>
+                    <p ng-repeat="user in feed.lastVictory.loseTeam">{{user}}</p>
+                </section>                  
+                <p ng-if="!feed.lastVictory">No Victory</p> 
+                <hr>
+                <h3>Last Defet</h3>
+                <section ng-if="feed.lastDefet">
+                    <p>win score: {{feed.lastDefet.winScore}}</p>
+                    <p>lose score: {{feed.lastDefet.loseScore}}</p>
+                    <h5>Win Team</h5>
+                    <p ng-repeat="user in feed.lastDefet.winTeam">{{user}}</p>
+                    <h5>Loss Team</h5>
+                    <p ng-repeat="user in feed.lastDefet.loseTeam">{{user}}</p>
+                </section>
+                <p ng-if="!feed.lastDefet">No losses</p>                  
+            </section>
+            <br>
+            <hr>
+            <h3>Frindes</h3>
+                <section ng-if="feed.friendsFromLastMacth">
+                    <p ng-repeat="user in feed.friendsFromLastMacth">{{user}}</p>
+                </section>
+                <p ng-if="!feed.friendsFromLastMacth">No friends yet</p>  
+        </section>
     </div>
 </div>

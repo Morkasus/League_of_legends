@@ -1,4 +1,4 @@
-angular.module('mySite')
+angular.module('LeagueOfLegends')
     .directive('mainNavbar', function navbarDirective(){
         return {
             link: function(){

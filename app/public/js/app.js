@@ -1,4 +1,4 @@
-angular.module('mySite', ['ngRoute'])
+angular.module('LeagueOfLegends', ['ngRoute'])
     .config(function($routeProvider){
     
         $routeProvider.when('/home', {

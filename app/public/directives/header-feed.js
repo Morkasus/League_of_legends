@@ -1,5 +1,5 @@
-angular.module('mySite')
-    .directive('headerIndex', function headerIndexDirective(){
+angular.module('LeagueOfLegends')
+    .directive('headerFeed', function headerFeedDirective(){
         return {
             link: function(){
                 $('.titles').fadeIn(5000);
@@ -16,6 +16,6 @@ angular.module('mySite')
                     $(this).animate({'margin-top':'120px'}, 150);
                 });
             },
-            templateUrl: '../views/headers/home.html'
+            templateUrl: '../views/headers/feed-header.html'
         };
 });

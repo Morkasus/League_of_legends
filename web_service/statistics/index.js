@@ -8,6 +8,7 @@ var Game = require('../events_manager/game.js');
 module.exports = class Statistics {
     showAchievements(userName,callback) {
     	User.findOne({ 'userName': userName}, function (err, user) {
+            console.log(user);
   			if (err) return handleError(err);
   			//contain win count. 
   			var userWin = user.wins;
@@ -18,7 +19,10 @@ module.exports = class Statistics {
   				//sorting games with eventId.
   				games = sortArray(games);
   				//last game after sorting.
-  				var lastGame = games[games.length-1];
+                var lastGame;
+                if(games.length > 0) 
+  		            lastGame = games[games.length-1];
+                else lastGame = false;
   				//getting last victory (runing on all games from last to first).
   				var lastVictory = getLastVictory(games,userName),
   					//getting last defet (runing on all games from last to first).
@@ -43,6 +47,8 @@ module.exports = class Statistics {
     function getFriends(lastGame,userName) {
     	var friendsArray = [];
     	//runing on winTeam array to take friends
+        console.log(userName);
+        if(userName == "admin") return false;
     	for (var i = 0; i < lastGame.winTeam.length ; i++){
  			//if found user continue
  			if (lastGame.winTeam[i] == userName) continue;
@@ -54,6 +60,7 @@ module.exports = class Statistics {
  			if (lastGame.loseTeam[i] == userName) continue;
  			friendsArray.push(lastGame.loseTeam[i]);
     	}
+        if(friendsArray == []) return false;
     	return friendsArray;		
     }
 
@@ -66,7 +73,7 @@ module.exports = class Statistics {
     		}
     	}
     	//user don't have any wins.
-    	return -1;
+    	return false;
     }
     function getLastDefet(games,userName) {
     	//runing on games (sorted) from the last game down
@@ -77,7 +84,7 @@ module.exports = class Statistics {
     		}
     	}
     	//user don't have any losses.
-    	return -1;
+    	return false;
     }
     //prepare json file. 
     function sendResult() {

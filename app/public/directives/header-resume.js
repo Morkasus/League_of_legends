@@ -1,4 +1,4 @@
-angular.module('mySite')
+angular.module('LeagueOfLegends')
     .directive('headerResume', function headerResumeDirective(){
         return {
             link: function(){

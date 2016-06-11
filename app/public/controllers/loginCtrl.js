@@ -1,5 +1,5 @@
 
-angular.module('mySite').controller('loginCtrl', function($scope){
+angular.module('LeagueOfLegends').controller('loginCtrl', function($scope){
         
     this.active = 1;
 
@@ -11,10 +11,3 @@ angular.module('mySite').controller('loginCtrl', function($scope){
         this.active = active;
     }
 });
-
-//todoApp.run(function($http){
-//    $http.get('http://localhost:3000/ws_todo/getActionsData').success(function(data){
-//        console.log(data);
-//        userName = data.userName;
-//    });
-//});

@@ -1,4 +1,4 @@
-angular.module('mySite')
+angular.module('LeagueOfLegends')
     .directive('headerProtfolio', function headerProtfolioDirective(){
         return {
             link: function(){
