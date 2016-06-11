@@ -31,12 +31,12 @@ app.config(function($routeProvider){
 
 app.controller('mainCtrl', function($scope, $http, $cookies){
         
-    $scope.isLogedIn = !!JSON.parse(String($cookies.get("isLogedIn")).toLowerCase());
+    $scope.isLogedIn = $cookies.get("isLogedIn") || false;
     $scope.active = Number($cookies.get("active") || 4);
     $scope.userName = $cookies.get("user") || ""; 
-    $scope.isAdmin = !!JSON.parse(String($cookies.get("isAdmin")).toLowerCase());
-    $scope.events = $cookies.getObject('events');
-    $scope.feed = $cookies.getObject('feed');
+    $scope.isAdmin = $cookies.get("isAdmin") || false;
+    $scope.events = $cookies.getObject('events') || {};
+    $scope.feed = $cookies.getObject('feed') || {};
 
     $scope.isActive = function(num){
         return $scope.active === num;
