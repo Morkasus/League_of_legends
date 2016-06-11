@@ -142,20 +142,17 @@ app.get('/leaveevent/:eventId/:userName', function(req, res){
         res.json(response);
     });
 });
-
-
-
 /*
      Feed URL's
 */
 app.get('/showachievements/:userName', function(req, res) {
+    console.log("show achievements url in actions");
     var userName = req.params.userName;
     statistics.showAchievements(userName, function (response) {
         console.log("res : " + response);
         res.json(response);
     });
 });
-
 
 app.listen(port);
 console.log("listening on port " + port);
