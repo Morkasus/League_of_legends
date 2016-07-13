@@ -1,13 +1,13 @@
 
 angular.module('LeagueOfLegends').controller('loginCtrl', function($scope){
         
-    this.active = 1;
+    $scope.loginActive = 1;
 
-    this.isActive = function(num){
-        return this.active === num;
+    $scope.isActive = function(num){
+        return $scope.loginActive === num;
     };
 
-    this.changeActive = function(active){
-        this.active = active;
+    $scope.changeActive = function(active){
+        $scope.loginActive = active;
     }
 });

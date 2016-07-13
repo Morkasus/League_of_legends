@@ -1,4 +1,4 @@
-<h1>Sign Up</h1>
+<h1 class="login_signup">Sign Up</h1>
 <div class="container loginForm">
     <form role="form">
         <div class="form-group">
@@ -26,7 +26,10 @@
             <input type="input" class="form-control" id="key" ng-model="key">
         </div>
         <button type="button" class="btn btn-primary" ng-click="createUser(username, password, mail, firstname, lastname, key)">Create</button>
+        <br><br>
+        <p ng-click="changeActive(1)">Login</p>
     </form>
+
 </div>
    
    

@@ -10,6 +10,8 @@
         <!-- My css -->
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="css/bootstrap.min.css">
+        <!-- Angular Material -->
+        <link rel="stylesheet" href="css/angular-material.min.css">
         <link rel="stylesheet" href="css/style.css">
         
 
@@ -19,34 +21,32 @@
         <!--  HEADER  -->
         <header class="subHeader" id="subHeader">
            
+            <div class="container text-center">
+                <h1>LEAGUE OF<br>LEGENDS</h1>
+            </div>
+                        
             <main-navbar></main-navbar>
-            <header-feed ng-show="isActive(1)"></header-feed>
-            <header-protfolio ng-show="isActive(2)"></header-protfolio>
-            <header-resume ng-show="isActive(3)"></header-resume>
-            <header-login ng-show="isActive(4)"></header-login>
-            
+
         </header>
         
         <!-- main -->
         <main class="main-wrapper" ng-controller="loginCtrl as login">
             <section ng-view ng-show="isLogedIn"></section>
             <section class="loginView text-center" ng-hide="isLogedIn">
-                <ul class="nav nav-pills">
-                  <li role="presentation" ng-click="login.changeActive(1)"><a href="#">LOGIN</a></li>
-                  <li role="presentation" ng-click="login.changeActive(2)"><a href="#">SIGNUP</a></li>
-                </ul>
-                <login ng-show="login.isActive(1)"></login>
-                <signup ng-show="login.isActive(2)"></signup>
+                <login ng-show="isActive(1)"></login>
+                <signup ng-show="isActive(2)"></signup>
             </section>
         </main>
         
         <!-- Footer -->
+<!--
         <div class="text-center subFooter">
             <div class="container text-center footerDiv">
                 <h2 class="logo">LEAGUE <span class="lastName">of</span> LEGENDS</h2>
                 <p>copyright Mor Kasus & Yossi Azoulay 2016</p>
             </div>
         </div>
+-->
         
        
         <!-- JQuery -->
@@ -56,11 +56,18 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" 
                 integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" 
                 crossorigin="anonymous"></script>
+                
         <!-- angular min -->
         <script src="js/lib/angular/angular.min.js"></script>
         <script src="js/lib/angular/angular-route.min.js"></script>
         <script src="js/lib/angular/angular-cookies.min.js"></script>
-        <!-- angular module --> 
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+        <script src="js/lib/angular/angular-material.js"></script>
+        <script src="js/lib/angular/angular-material-mocks.js"></script>
+
+        <!-- angular module -->
         <script src="js/app.js"></script>
         <!-- angular controllers -->
         <script src="controllers/mainCtrl.js"></script>
@@ -68,12 +75,13 @@
         <script src="controllers/eventCtrl.js"></script> 
         <!-- angular directives --> 
         <script src="directives/header-feed.js"></script>
-        <script src="directives/header-resume.js"></script>
+        <script src="directives/header-events.js"></script>
         <script src="directives/header-login.js"></script>
-        <script src="directives/header-protfolio.js"></script>
+        <script src="directives/header-achivements.js"></script>
         <script src="directives/login.js"></script>
         <script src="directives/signup.js"></script>
         <script src="directives/navbar.js"></script>
-        <!-- scripts -->
+         
+
     </body>
 </html>

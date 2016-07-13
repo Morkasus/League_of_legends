@@ -1,27 +1,27 @@
-var app = angular.module('LeagueOfLegends', ['ngRoute', 'ngCookies']);
+var app = angular.module('LeagueOfLegends', ['ngMaterial','ngRoute', 'ngCookies']);
 
 app.config(function($routeProvider){
     
         $routeProvider.when('/home', {
-            templateUrl: '../views/mains/index.html',
+            templateUrl: 'views/mains/feed.html',
         })
         
         .when('/resume', {
-            templateUrl: '../views/mains/resume.html',
+            templateUrl: 'views/mains/login.html',
             controller: 'loginCtrl.js',
             controllerAs: 'login'
         })
                
         .when('/achivements', {
-            templateUrl: '../views/mains/achivements.html',
+            templateUrl: 'views/mains/achivements.html',
         })
 
         .when('/events', {
-            templateUrl: '../views/mains/events.html',
+            templateUrl: 'views/mains/events.html',
         })
         
         .when('/', {
-            templateUrl: '../views/mains/index.html',
+            templateUrl: 'views/mains/feed.html',
         })
         
         .otherwise({ redirectTo: '/'});
@@ -31,10 +31,10 @@ app.config(function($routeProvider){
 
 app.controller('mainCtrl', function($scope, $http, $cookies){
         
-    $scope.isLogedIn = $cookies.get("isLogedIn") || false;
+    $scope.isLogedIn = ($cookies.get("isLogedIn") === "true") || false;
     $scope.active = Number($cookies.get("active") || 4);
     $scope.userName = $cookies.get("user") || ""; 
-    $scope.isAdmin = $cookies.get("isAdmin") || false;
+    $scope.isAdmin = ($cookies.get("isAdmin") === "true") || false;
     $scope.events = $cookies.getObject('events') || {};
     $scope.feed = $cookies.getObject('feed') || {};
 
@@ -50,21 +50,19 @@ app.controller('mainCtrl', function($scope, $http, $cookies){
     
     $scope.insertKey = function(key, callback){
 
-        $http.get('http://localhost:3000/insertkey/'+key).success(function(data){
+        $http.get('https://league-of-legends-service.herokuapp.com/insertkey/'+key).success(function(data){
             callback(data);
         });
     }
         
     this.login = function(userName, password){
-        console.log(userName);
-        console.log(password);
         var data = {
             'username': userName,
             'password': password
         };
-        $http.post('http://localhost:3000/login', data)
+        $http.post('https://league-of-legends-service.herokuapp.com/login', data)
             .success(function(data){
-                console.log(data.status);
+                //console.log(data.status);
                 if(data.status === "success") {
                     $scope.userName = data.user;
                     $scope.isAdmin = data.isAdmin;
@@ -77,7 +75,10 @@ app.controller('mainCtrl', function($scope, $http, $cookies){
                     $cookies.put("isLogedIn",  true); 
                     $cookies.put("active",  1);
                     
-                    if(!$scope.isAdmin) $scope.showAchivements($scope.userName);
+                    if(!$scope.isAdmin) {
+                        $scope.showAchivements($scope.userName);
+                        window.location.hash = '/feed';
+                    } else window.location.hash = '/events';
                 }
                 else {
                     //show error
@@ -94,7 +95,6 @@ app.controller('mainCtrl', function($scope, $http, $cookies){
         $cookies.put("isAdmin",  false); 
         $cookies.put("isLogedIn",  false); 
         $cookies.put("active",  4);
-        //http.get logout
     }
     
     $scope.createUser = function(userName, pass, mail, firstName, lastName, key) {
@@ -105,7 +105,6 @@ app.controller('mainCtrl', function($scope, $http, $cookies){
         console.log(lastName);
         console.log(key);
         $scope.insertKey(key, function(res) {
-            console.log(res);
             if(res.status == "success") {
                 var data = {
                     'username': userName,
@@ -114,23 +113,11 @@ app.controller('mainCtrl', function($scope, $http, $cookies){
                     'firstname': firstName,
                     'lastname': lastName,
                 };  
-                $http.post('http://localhost:3000/createuser', data)
+                $http.post('https://league-of-legends-service.herokuapp.com/createuser', data)
                     .success(function(data){
-                        console.log(data.status);
+                        //console.log(data.status);
                         if(data.status === "success") {
-                            $scope.userName = data.user;
-                            $scope.isAdmin = data.isAdmin;
-                            $scope.isLogedIn = true;
-                            $scope.active = 1;
-                            window.location.hash = '/home';
-
-                            $cookies.put("user",  userName);
-                            $cookies.put("isAdmin",  false); 
-                            $cookies.put("isLogedIn",  true); 
-                            $cookies.put("active",  1);
-                            
-                            if(!$scope.isAdmin) $scope.showAchivements($scope.userName);
-                            //remove key !!!
+                            location.reload(); 
                         }
                         else {
                             //failed create new user error
@@ -146,26 +133,25 @@ app.controller('mainCtrl', function($scope, $http, $cookies){
     $scope.showEvents = function() {
         
         $scope.changeActive(3);
-        $http.get('http://localhost:3000/showevents').success(function(data){
+        $http.get('https://league-of-legends-service.herokuapp.com/showevents').success(function(data){
             $scope.events = data;
             $cookies.putObject('events',data);
-            console.log(data);
-            //console.log($scope.events);
         });
     }
     
     $scope.showAchivements = function(userName) {
         $scope.changeActive(1);
-        $http.get('http://localhost:3000/showachievements/'+userName).success(function(data){
+        $http.get('https://league-of-legends-service.herokuapp.com/showachievements/'+userName).success(function(data){
             $scope.feed = data;
             $cookies.putObject('feed', data);
-            console.log(data);
-            //console.log($scope.events);
         });
     }
     
+    $scope.getMonsterPicture = function() {
+        var randomImg = "../../images/character";
+        var tempNum = 0;
+        return randomImg + Math.floor((Math.random() * 5) + 1) + ".png";
+        console.log(randomImg + Math.floor((Math.random() * 5) + 1) + ".png");
+    }
+    
 });
-
-
-function validateFields(field) {
-}

@@ -9,17 +9,17 @@ angular.module('LeagueOfLegends').controller('eventCtrl', function($scope, $http
             'description': description,
             'location': location
         }
-        $http.post('http://localhost:3000/createevent', data)
+        $http.post('https://league-of-legends-service.herokuapp.com/createevent', data)
             .success(function(data){
-                console.log(data.status);
+                //console.log(data.status);
                 $scope.showEvents();
                 $scope.toggleEevent();
         });
     }
     
     $scope.hideEvent = function(eventId) {
-        $http.get('http://localhost:3000/hideevent/' + eventId).success(function(data){
-            console.log(data);
+        $http.get('https://league-of-legends-service.herokuapp.com/hideevent/' + eventId).success(function(data){
+            //console.log(data);
             if(data.status == 'success') {
                 $scope.showEvents();                    
             }
@@ -27,15 +27,15 @@ angular.module('LeagueOfLegends').controller('eventCtrl', function($scope, $http
     }
     
     $scope.startEvent = function(eventId) {
-        $http.get('http://localhost:3000/startevent/' + eventId).success(function(data){
-            console.log(data);
+        $http.get('https://league-of-legends-service.herokuapp.com/startevent/' + eventId).success(function(data){
+            //console.log(data);
             $scope.hideEvent(eventId);
         });
     }
     
     $scope.joinEvent = function(eventId, userName) {
-        $http.get('http://localhost:3000/joinevent/' + eventId + '/' + userName).success(function(data){
-            console.log(data);
+        $http.get('https://league-of-legends-service.herokuapp.com/joinevent/' + eventId + '/' + userName).success(function(data){
+            //console.log(data);
             if(data.status == 'success') {
                 $scope.showEvents();                    
             }
@@ -44,8 +44,8 @@ angular.module('LeagueOfLegends').controller('eventCtrl', function($scope, $http
     
     
     $scope.leaveEvent = function(eventId, userName) {
-        $http.get('http://localhost:3000/leaveevent/' + eventId + '/' + userName).success(function(data){
-            console.log(data);
+        $http.get('https://league-of-legends-service.herokuapp.com/leaveevent/' + eventId + '/' + userName).success(function(data){
+            //console.log(data);
             if(data.status == 'success') {
                 $scope.showEvents();                    
             }

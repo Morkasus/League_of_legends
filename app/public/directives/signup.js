@@ -4,6 +4,6 @@ angular.module('LeagueOfLegends')
             link: function(){
                 //$('.signup').fadeIn(3000);
             },
-            templateUrl: '../views/login/signup.html'
+            templateUrl: 'views/login/signup.html'
         };
 });

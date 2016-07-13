@@ -1,9 +1,9 @@
 angular.module('LeagueOfLegends')
-    .directive('headerResume', function headerResumeDirective(){
+    .directive('headerEvents', function headerEventsDirective(){
         return {
             link: function(){
                 $('.cv').fadeIn(3000);
             },
-            templateUrl: '../views/headers/resume.html'
+            templateUrl: 'views/headers/events.html'
         };
 });

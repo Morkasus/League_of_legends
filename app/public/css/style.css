@@ -5,7 +5,13 @@
 
 
 body{
-    background-color: #fff;
+    background-color: #161616 !important;
+}
+
+header {
+    background-image: url('../images/background.jpg') ;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 p{
@@ -28,159 +34,16 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Oswald', sans-serif;
 }
 
+main {
+    min-height: 700px;
+    background-color: #161616;
+}
+
 .subHeader {
     background-color: #0b0b0b;
-    height: 400px;
+    height: 500px;
 }
 
-.logo{
-    font-size: 25px;
-    font-family: Oswald, sans-serif;
-}
-
-.lastName{
-    font-size: 20px;
-    font-family: Oswald, sans-serif;
-}
-
-.titles, .cv, .contact, .prot{
-    display: none;
-}
-
-.subHeader h1 {
-    margin-top: 100px;
-    font-size: 64px;
-    color: #fff;
-}
-
-.subHeader p {
-    font-size: 26px;
-    color: #fff;
-    margin-bottom: 50px;
-}
-
-.subHeader span.buttons {
-    color: #fff;
-    font-size: 15px;
-    font-weight: bold;
-    font-family: 'Open Sans', sans-serif;
-    border: 2px solid #fff;
-    padding: 14px 26px 14px 26px;
-    margin: 8px;
-    transition: background-color 1.3s;
-}
-
-.subHeader span.buttons:hover{
-    color: #353439;
-    background-color: #fff;
-}
-
-.moreArrow{
-    color: #fff;
-    margin-top: 120px;
-    transition: color 1s;
-}
-
-.moreArrow:hover{
-    color: #7c7c7f;
-}
-
-#footerNav li { 
-    color: #fff; 
-}
-
-
-.background{
-    margin-top: 40px;
-    margin-bottom: 40px;
-    width: 70%;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #353439;
-}
-
-.main h2{
-    margin-bottom: 20px;
-}
-
-.protfolio h2 {
-    margin-bottom: 20px;
-}
-
-.protfolio .Project{
-    background-image: url(../images/work.jpg);
-    background-repeat: no-repeat;
-    height: 233px;
-    opacity: 1;
-    position: relative;
-    transition: opacity 2.3s;
-}
-
-.protfolio .Project:hover{
-    opacity: 0.7;
-}
-
-
-.protfolio .Project:hover p.works{
-    visibility: visible;  
-}
-
-.protfolio .Project:hover .projectName{
-    visibility: visible;
-}
-
-.Project {
-    margin-bottom: 60px;
-}
-
-.projectName {
-    z-index: 1;
-    position: absolute;
-    top: 72px;
-    left: 140px;
-    font-size: 20px;
-    color: #fff;
-    font-family: fantasy;
-}
-
-.Project ~ p{
-    margin-bottom: 35px;
-}
-
-.Project p {
-    z-index: 1;
-    font-weight: bold;
-    position: absolute;
-    top: 100px;
-    left: 117px;
-    font-size: 13px;
-    color: #fff;
-    border: 3px solid #fff;
-    padding: 10px 18px 10px 18px;
-}
-
-.Project p.works, .projectName{
-    visibility: hidden;
-}
-
-.Project p:hover{
-    color: #353439;
-    background-color: #fff;
-}
-
-.allProjectLink{
-    color: #353439;
-    font-size: 20px;
-    font-weight: bold;
-    padding: 14px 21px 14px 21px;
-    border: 2px solid #353439;
-}
-
-.allProjectLink:hover{
-    color: #fff;
-    background-color: #353439;
-    border: 2px solid #fff;
-    transition: background-color 2s;
-}
 
 .footer{
     margin-top: 40px;
@@ -195,10 +58,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .footer i:hover{
     color: #7c7c7f;
-}
-
-main {
-    min-height: 700px;
 }
 
 .footer h5 {
@@ -234,119 +93,262 @@ main {
     font-size: 10px;
 }
 
-
-/* RESUME PAGE */
-
-.resume{
-    margin-top: 60px;
-    height: 800px;
-}
-
-.cover {
-    margin-top: 40px;
-}
-
-.cover span {
-    margin-left: 13px;
-    margin-top: 3px;
-}
-
-.cover a {
-    font-size: 15px;
-    color: #26262a;
-}
-
-.cover a:hover{
-    color: #7c7c7f;
-}
-
-.contact {
-    
-}
-
-/* CONTACT PAGE */
-#map {
-    height: 100%;
-}
-
-.contactPlace{
+.feedPlace{
     margin-top: 50px;
 }
 
-form {
-    margin-bottom: 40px;
+.subHeader h1{
+    font-size: 60px;
+    color: #fff;
+    padding-top:150px;
 }
 
-
-
-/*     LEAGUE OF LEGENDS      */
+.login_signup {
+    color: #337ab7;
+    font-size: 50px;
+    padding-top: 40px;    
+    padding-bottom: 15px;
+}
 
 .loginForm {
+    color: #fff;
     width: 500px;
 }
 
-
-
-
-/* MEDIA QUERIES */
-@media screen and (max-width:992px) {
-    .resume{
-        height: 1000px;
-    }
+.loginForm p {
+    font-weight: bold;
+    color: #b3b3b4;
+}
+#mainnav {
+    margin-top: 50px;
 }
 
-@media screen and (max-width:550px) {
-    .personalDetails {
-        width: 100%;
+
+#mainnav ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+#mainnav li {
+    text-align: center;
+    display: inline-block;
+    padding: 0 15px 0 15px;
+    margin-left: -2px;
+}
+
+#mainnav ul>li:first-child {
+    margin-left: 0;
+}
+
+#mainnav li a {
+    font-size: 120%;
+    font-weight: 400;
+    display: block;
+    width: 120px;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 0.6px;
+    text-decoration: none;
+    padding: 5px 0 5px 0;
+}
+
+
+#mainnav ul>li.active {
+    border-bottom: 3px solid #00fff5;
+    margin-bottom: -5px;
+}
+
+.feed {
+    color : #fff;
+}
+
+.feed section {
+    margin-top:75px;
+}
+
+.feed div {
+    margin-bottom: 20px;
+}
+
+.gamesRecord {
+    margin-bottom: 20px;
+}
+
+.gamesRecord img {
+    width: 120px;
+    height: 130px;
+}
+
+.gamesRecord h2{
+    color: #2cedf5;
+    font-size: 20px;
+}
+
+.gamesRecord h3{
+    font-size: 50px;
+}
+
+.gamesRecord p{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.statusImg {
+    width: 180px;
+    height: 170px;
+}
+
+.friends {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.friends img {
+    width: 80px;
+    height: 80px;
+}
+
+.teams img{
+    width: 100px;
+    height: 100px;
+}
+
+.team img {
+    width: 200px;
+    height: 140px;
+}
+
+.team p {
+    font-size: 20px;
+    margin-top: 10px;
+}
+.myTeamLogo img{
+    width: 160px;
+    height: 180px;
+}
+
+feed hr {
+    color : #737373;
+    font-size: 1px;
+}
+
+.lastVictory h2 {
+    color: #58fc9e;
+    font-size: 70px;
+    font-family:sans-serif;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.lastDefet h2 {
+    color : #fd4843;
+    font-size: 70px;
+    font-family:sans-serif;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+
+@media screen and (max-width:600px) {
+
+    
+    #mainnav li a {
+        font-size: 10px;
+        display: block;
+        width: 60px;
+        color: #fff;
+        font-weight: bold;
     }
     
-    .logo{
-        margin-left: 20px;
-    }
-    
-    .hamburger{
-        margin-right: 20px;
-    }
-    
+
     .subHeader {
-        height: 450px;
+        height: 320px;
     }
     
     .subHeader h1 {
-        margin-top: 50px;
-        font-size: 34px;
-        color: #fff;
-    }
-    .subHeader p {
-        font-size: 8px;
-        color: #fff;
-        margin-bottom: 50px;
-    }
-
-    .subHeader span.buttons {
-        color: #fff;
-        font-size: 10px;
-        font-weight: bold;
-        font-family: 'Open Sans', sans-serif;
-        border: 2px solid #fff;
-        padding: 5px 17px 5px 17px;
-        margin: 3px;
-    }
-    
-    
-    .background{
         margin-top: 20px;
-        width: 90%;
-        padding-bottom: 30px;
-        border-bottom: 1px solid #353439;
+        font-size: 34px;
+        padding-top:80px;
     }
     
-    .resume{
-        height: 1050px;
-    }
     
     .loginForm {
         width: 300px;
+    }
+    
+    .gamesRecord img {
+        width: 90px;
+        height: 100px;
+    }
+
+    .gamesRecord h2{
+        color: #2cedf5;
+        font-size: 20px;
+    }
+
+    .gamesRecord h3{
+        font-size: 40px;
+    }
+
+    .gamesRecord p{
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .statusImg {
+        width: 130px;
+        height: 120px;
+    }
+
+    .friends {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .friends img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .teams img{
+        width: 60px;
+        height: 60px;
+    }
+
+    .team img {
+        width: 110px;
+        height: 70px;
+    }
+
+    .team p {
+        font-size: 13px;
+        margin-top: 10px;
+    }
+    .myTeamLogo img{
+        width: 120px;
+        height: 140px;
+    }
+
+    feed hr {
+        color : #737373;
+        font-size: 1px;
+    }
+
+    .lastVictory h2 {
+        color: #58fc9e;
+        font-size: 50px;
+        font-family:sans-serif;
+        font-weight: bold;
+        letter-spacing: 3px;
+    }
+
+    .lastDefet h2 {
+        color : #fd4843;
+        font-size: 50px;
+        font-family:sans-serif;
+        font-weight: bold;
+        letter-spacing: 3px;
     }
 }
 
