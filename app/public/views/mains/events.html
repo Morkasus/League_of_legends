@@ -1,9 +1,10 @@
 <div class="container text-center contactMe" ng-controller="eventCtrl" ng-init="init()">
-    <div class="col-md-4 col-md-offset-4 contactPlace">
-            <button ng-show="isAdmin" class="btn btn-success" ng-show="!newEvent" ng-click="toggleEevent()">New event</button>
-            <form role="form" ng-show="newEvent">
+    <div>
+<!--            <button ng-show="isAdmin" class="btn btn-success" ng-show="!newEvent" ng-click="toggleEevent()">New event</button>-->
+            <img class="plusButton" src="../../images/plusButton.png" ng-show="isAdmin" ng-show="!newEvent" ng-click="toggleEevent()"/>
+            <form class="eventForm" role="form" ng-show="newEvent"><br>
                 <div class="form-group">
-                    <label for="eventName">Event Name:</label>
+                    <label for="eventName">Event Name</label>
                     <input type="text" class="form-control" id="name" ng-model="eName">
                 </div>
                 <div class="form-group">
@@ -14,20 +15,48 @@
                     <label for="eventLocation">Location</label>
                     <input type="text" class="form-control" id="loc" ng-model="eLocation">
                 </div>
-                <button type="button" class="btn btn-primary" ng-click="createEvent(eName, eDescription, eLocation)">Create</button>
-            </form>
-        <section class="events" ng-repeat="event in events">
-            <section class="event">
-                <h1>{{event.eventName}}</h1>
-                <p>{{event.description}}</p>
-                <p>{{event.location}}</p>
-                <p>{{event.playerCounter}}</p>
-                <button ng-show="isAdmin" class="btn btn-danger" ng-click="hideEvent(event.eventId)">delete</button>
-                <button ng-show="isAdmin" class="btn btn-success" ng-click="startEvent(event.eventId)" ng-if="event.playerCounter == 6">start</button>
-                <button ng-show="!isAdmin&&!isInEvent(event.eventId)" class="btn btn-success" ng-click="joinEvent(event.eventId, userName)">join</button>
-                <button ng-show="!isAdmin&&isInEvent(event.eventId)" class="btn btn-danger" ng-click="leaveEvent(event.eventId, userName)">leave</button>
-                <hr>
-            </section>
+                <div class="createEvent" ng-click="createEvent(eName, eDescription, eLocation)">
+                    <h5>Create</h5>
+                </div>
+
+            </form><br><br><br>
+        
+        <section class="events" ng-repeat="event in events" >
+            <div class="eventDiv" layout="column" layout-align="center center">
+                <div class="eventTitle text-left" ng-style="{'background-image':'url({{event.eventImg}})'}"
+                   ng-click="openDescription(event.eventId)">
+                    <div class="xImage" >
+                        <img ng-show="isAdmin" src="../../images/x.png" ng-click="hideEvent(event.eventId)">
+                    </div>
+                    <h1>{{event.eventName}}</h1>
+                </div>
+                <div class="eventDescription" ng-show="isOpen(event.eventId)">
+                    <p><span>The event</span><br>{{event.description}}</p>    
+                </div>
+                <div class="eventRegistration" layout="row"  layout-align="space-around end" layout-wrap>
+                    <div flex="33" layout="row" layout-align="center center">
+                        <p><span class="playersNum">{{event.playerCounter}}</span> / <span>6</span></p>
+                    </div>
+                    <div flex="33" layout="row" layout-align="center center">
+                        <p>{{event.location}}</p>
+                    </div>
+                    <div flex="33" class="start" ng-show="isAdmin" layout="row" layout-align="center center"
+                       ng-click="startEvent(event.eventId)" ng-if="event.playerCounter == 6">
+                        <p>Start</p>
+                    </div>
+                    <div flex="33" ng-show="!isOpen(event.eventId)&&!isAdmin" layout="row" layout-align="center center">
+                        <p>Free</p>
+                    </div>
+                    <div flex="33" class="leave" ng-show="isOpen(event.eventId)&&!isAdmin&&isInEvent(event.eventId)"
+                       layout="row" layout-align="center center" ng-click="leaveEvent(event.eventId, userName)">
+                        <p>Leave</p>
+                    </div>
+                    <div flex="33" class="join" ng-show="isOpen(event.eventId)&&!isAdmin&&!isInEvent(event.eventId)" 
+                       layout="row" layout-align="center center" ng-click="joinEvent(event.eventId, userName)">
+                        <p>Join</p>
+                    </div>
+                </div>    
+            </div>
         </section>
     </div>
 </div>

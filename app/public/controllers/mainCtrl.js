@@ -23,7 +23,6 @@ app.config(function($routeProvider){
         .when('/', {
             templateUrl: 'views/mains/feed.html',
         })
-        
         .otherwise({ redirectTo: '/'});
     
 });
@@ -37,6 +36,7 @@ app.controller('mainCtrl', function($scope, $http, $cookies){
     $scope.isAdmin = ($cookies.get("isAdmin") === "true") || false;
     $scope.events = $cookies.getObject('events') || {};
     $scope.feed = $cookies.getObject('feed') || {};
+    $scope.imgUrl = $cookies.get("imgUrl") || ""; 
 
     $scope.isActive = function(num){
         return $scope.active === num;
@@ -68,13 +68,15 @@ app.controller('mainCtrl', function($scope, $http, $cookies){
                     $scope.isLogedIn = true;
                     $scope.active = 1;
                     window.location.hash = '/home';
-
+                    
                     $cookies.put("user",  data.user);
                     $cookies.put("isAdmin",  data.isAdmin); 
                     $cookies.put("isLogedIn",  true); 
                     $cookies.put("active",  1);
                     
                     if(!$scope.isAdmin) {
+                        $scope.imgUrl = data.imgUrl;
+                        $cookies.put("imgUrl",  data.imgUrl);
                         $scope.showAchivements($scope.userName);
                         window.location.hash = '/feed';
                     } else {
@@ -95,6 +97,7 @@ app.controller('mainCtrl', function($scope, $http, $cookies){
         $scope.active = 4;
         $scope.userName = "";
         $scope.isAdmin = false;
+        $scope.imgUrl = "";
         $cookies.put("user",  "");
         $cookies.put("isAdmin",  false); 
         $cookies.put("isLogedIn",  false); 
@@ -139,6 +142,7 @@ app.controller('mainCtrl', function($scope, $http, $cookies){
         $scope.changeActive(3);
         $http.get('https://league-of-legends-service.herokuapp.com/showevents').success(function(data){
             $scope.events = data;
+            console.log(data);
             $cookies.putObject('events',data);
         });
     }

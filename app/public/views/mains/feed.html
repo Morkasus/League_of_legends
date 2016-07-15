@@ -4,26 +4,32 @@
             <section class="feed">
                 <div class="gamesRecord" layout="row" layout-align="space-around center">
                     <div class="text-center">
-                        <img src="../../images/drnLogo.png">
+                        <img ng-src="{{imgUrl}}">
                         <h5>{{userName}}</h5>
                     </div>
                     <div class="text-center">
-                        <h3>{{feed.userWin}}</h3>
+                        <div class="circle">
+                            <h3>{{feed.userWin}}</h3>
+                        </div>
                         <p>wins</p>
                     </div>
                     <div class="text-center">
-                        <h3>{{feed.userLoses}}</h3>
-                        <p>loses</p>
+                        <div class="circle">
+                            <h3>{{feed.userLoses}}</h3>
+                        </div>
+                        <p>losses</p>
                     </div>
                 </div>
                 <div class="friends" layout="row" layout-align="space-around center" ng-if="feed.friendsFromLastMacth">
                     <div class="text-center" ng-repeat="user in feed.friendsFromLastMacth">
                         <p>{{user}}</p>
-<!--                        <img ng-src="{{getMonsterPicture()}}">-->
-                        <img ng-src="../../images/character1.png">
+                        <img src="../../images/character2.png">
                     </div>
                 </div>
-                <p ng-if="!feed.friendsFromLastMacth" class="text-center">No friends yet<br></p>
+                <div layout="row" layout-align="center center" ng-if="!feed.friendsFromLastMacth" class="text-center"> 
+                    <div><img ng-src="../../images/noGamesFound.png"><br></div>
+                    <div><h2>No friends yet</h2></div>
+                </div>
                 <hr>
                 <section class="lastVictory" ng-if="feed.lastVictory">
                     <div class="text-center" layout="row" layout-align="space-around center">
@@ -47,7 +53,9 @@
                         </div>
                     </div>
                 </section>
-                <p ng-if="!feed.lastVictory" class="text-center">No Victories<br><br></p>
+                <div layout="row" layout-align="center center" ng-if="!feed.lastVictory" class="text-center">
+                    <div> <h2>No <img ng-src="../../images/NovictoryYet.png">Yet</h2></div>
+                </div>
                 <section class="lastDefet" ng-if="feed.lastDefet">
                     <div layout="row" layout-align="space-around center">
                         <div class="text-center">
@@ -70,7 +78,9 @@
                         </div>
                     </div>
                 </section>
-                <p ng-if="!feed.lastDefet" class="text-center">No losses<br><br></p> 
+                <div layout="row" layout-align="center center" ng-if="!feed.lastVictory" class="text-center">
+                    <div> <h2>No<img ng-src="../../images/noDefeatYet.png">Yet</h2></div>
+                </div>
                 <section class="teams">
                     <div layout="row" layout-align="center center">
                         <div class="text-center"><img src="../../images/birdLogo.png"><h4>86</h4></div>
@@ -78,53 +88,6 @@
                         <div class="text-center"><img src="../../images/maskLogo.png"><h4>88</h4></div>
                     </div>
                 </section>
-                
-                <!--<h1>{{userName}}</h1>
-                <p>wins: {{feed.userWin}}</p>
-                <p>loses: {{feed.userLoses}}</p>
-                <hr>
-                <h3>Last Game</h3>
-                <section ng-if="feed.lastGame">
-                    <p>win score: {{feed.lastGame.winScore}}</p>
-                    <p>lose score: {{feed.lastGame.loseScore}}</p>
-                    <h5>Win Team</h5>
-                    <p ng-repeat="user in feed.lastGame.winTeam">{{user}}</p>
-                    <h5>Loss Team</h5>
-                    <p ng-repeat="user in feed.lastGame.loseTeam">{{user}}</p>                       
-                </section>
-                <p ng-if="!feed.lastGame">No games played</p>         
-                <br>
-                <hr>
-                <h3>Last Victory</h3>
-                <section ng-if="feed.lastVictory">
-                    <p>win score: {{feed.lastVictory.winScore}}</p>
-                    <p>lose score: {{feed.lastVictory.loseScore}}</p>
-                    <h5>Win Team</h5>
-                    <p ng-repeat="user in feed.lastVictory.winTeam">{{user}}</p>
-                    <h5>Loss Team</h5>
-                    <p ng-repeat="user in feed.lastVictory.loseTeam">{{user}}</p>
-                </section>                  
-                <p ng-if="!feed.lastVictory">No Victory</p> 
-                <hr>
-                <h3>Last Defet</h3>
-                <section ng-if="feed.lastDefet">
-                    <p>win score: {{feed.lastDefet.winScore}}</p>
-                    <p>lose score: {{feed.lastDefet.loseScore}}</p>
-                    <h5>Win Team</h5>
-                    <p ng-repeat="user in feed.lastDefet.winTeam">{{user}}</p>
-                    <h5>Loss Team</h5>
-                    <p ng-repeat="user in feed.lastDefet.loseTeam">{{user}}</p>
-                </section>
-                <p ng-if="!feed.lastDefet">No losses</p>                  
-            </section>
-            <br>
-            <hr>
-            <h3>Frindes</h3>
-                <section ng-if="feed.friendsFromLastMacth">
-                    <p ng-repeat="user in feed.friendsFromLastMacth">{{user}}</p>
-                </section>
-                <p ng-if="!feed.friendsFromLastMacth">No friends yet</p>  
-                -->
         </section>
     </div>
 </div>

@@ -45,58 +45,6 @@ main {
 }
 
 
-.footer{
-    margin-top: 40px;
-    height: 80px;
-    background-color: #353439;
-}
-
-.footer i{
-    margin-top: 30px;
-    color: #fff;
-}
-
-.footer i:hover{
-    color: #7c7c7f;
-}
-
-.footer h5 {
-    color: #fff;
-    font-size: 25px;
-    font-weight: bold;
-    margin-top: 25px;
-}
-
-.subFooter {
-    height: 100px;
-    background-color: #26262a;
-}
-
-.footerDiv {
-    color: #7c7c7f;
-}
-
-.footerDiv h2{
-    margin-top: 30px;
-}
-
-.footerDiv li {
-    margin-top: 11px;
-    font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 3px;
-    color: #7c7c7f;
-}
-
-
-.footerDiv p {
-    font-size: 10px;
-}
-
-.feedPlace{
-    margin-top: 50px;
-}
-
 .subHeader h1{
     font-size: 60px;
     color: #fff;
@@ -249,6 +197,166 @@ feed hr {
     letter-spacing: 3px;
 }
 
+.eventDescription, .eventRegistration {
+    width: 75%;
+    background: #fff;
+}
+
+
+
+.eventDescription {
+    padding: 30px 15px 30px 15px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: left;
+    line-height: 20px;
+    color: #525252;
+}
+
+.eventDescription span {
+    font-weight: bold;
+    font-size: 16px;
+    color: #444444;
+} 
+
+
+.eventTitle{
+    outline: 0;
+    position: relative;
+    width: 75%;
+    height: 180px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color:#fff;
+    padding-left: 10px;
+    padding-top: 80px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+
+
+.xImage {
+    position: absolute;
+    top: -25px;
+    right: 0px;
+    width: 20px;
+    height: 20px;
+}
+
+.xImage img {
+    width: 23px;
+    height: 23px;
+    padding-left: 1px;
+    padding-top: 1.5px;
+}
+
+.xImage img:hover {
+    width: 25px;
+    height: 25px; 
+}
+
+.eventRegistration {
+    height: 130px;
+    color: #444444;
+    background-image: url("../images/line.png");
+    background-repeat: no-repeat;
+    margin-bottom: 100px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.eventRegistration div {
+    height: 90%;
+    padding: 10px;
+}
+.eventRegistration p{
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+.playersNum{
+    color: #05e4f0;
+}
+
+.join {
+    background: linear-gradient(#19b2f6, #00f4ed);
+    height: 90%;
+    outline:0;
+    border-bottom-right-radius: 5px;
+}
+
+.join:hover {
+    background: linear-gradient(#00f4ed, #19b2f6);
+}
+
+.leave {
+    background: linear-gradient(#ff0c00, #ff6057);
+    height: 90%;
+    outline:0;
+    border-bottom-right-radius: 5px;
+}
+
+.leave:hover {
+    background: linear-gradient(#ff6057, #ff0c00);
+}
+
+.start {
+    background: linear-gradient(#4caf50, #aeff54);
+    height: 90%;
+    outline:0;
+    border-bottom-right-radius: 5px;
+}
+
+.start:hover {
+    background: linear-gradient(#aeff54, #4caf50);
+}
+
+.circle {
+    width: 130px;
+    height: 130px;
+    background-image: url("../images/circle.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.circle h3 {
+    padding-top:30px;
+     padding-right:3px;
+}
+
+.eventForm{
+    color: #fff;
+}
+
+.plusButton {
+    width: 60px;
+    height: 60px;
+    outline: 0;
+}
+
+.plusButton:hover {
+    width: 70px;
+    height: 70px;
+}
+
+.createEvent {
+    margin: 0 auto;
+    outline: 0;
+    width: 200px;
+    height: 80px;
+    background-image: url(../images/swordCreate.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: #9af5f3;
+}
+
+.createEvent:hover {
+    width: 250px;
+    height: 80px;
+}
 
 @media screen and (max-width:600px) {
 
@@ -349,6 +457,36 @@ feed hr {
         font-family:sans-serif;
         font-weight: bold;
         letter-spacing: 3px;
+    }
+    
+    .plusButton {
+        width: 30px;
+        height: 30px;
+        outline: 0;
+    }
+
+    .plusButton:hover {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .eventRegistration p{
+        font-size: 12px;
+    }
+    
+    .eventTitle, .eventRegistration, .eventDescription {
+        width: 90%;
+    }
+    
+    .circle {
+        width: 80px;
+        height: 80px;
+    }
+
+    .circle h3 {
+        padding-top:19px;
+        padding-right:2px;
+        font-size: 30px;
     }
 }
 

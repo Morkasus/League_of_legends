@@ -3,6 +3,7 @@ angular.module('LeagueOfLegends').controller('eventCtrl', function($scope, $http
         
     $scope.newEvent = false;
     $scope.joinedEvents = [];
+    $scope.openEvents = [];
     
     $scope.init = function(){
         var joined = [];
@@ -75,6 +76,27 @@ angular.module('LeagueOfLegends').controller('eventCtrl', function($scope, $http
             return false;
         }
     }
+    
+    $scope.openDescription = function(eventId) {
+        if($scope.openEvents.indexOf(eventId) > -1) {
+            $scope.openEvents.splice($scope.openEvents.indexOf(eventId), 1);
+        }
+        else {
+            $scope.openEvents.push(eventId);
+        }
+    }
+    
+    $scope.isOpen = function(eventId) {
+        if($scope.openEvents.indexOf(eventId) > -1) return true;
+        return false;
+    }
+    
+    $scope.getEventImage = function() {
+        var randomImg = "../../images/event";
+        var tempNum = 0;
+        return randomImg + Math.floor((Math.random() * 3) + 1) + ".png";
+    }
+    
 });
 
 
