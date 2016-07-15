@@ -8,11 +8,11 @@
                         <h5>{{userName}}</h5>
                     </div>
                     <div class="text-center">
-                        <h3>5</h3>
+                        <h3>{{feed.userWin}}</h3>
                         <p>wins</p>
                     </div>
                     <div class="text-center">
-                        <h3>3</h3>
+                        <h3>{{feed.userLoses}}</h3>
                         <p>loses</p>
                     </div>
                 </div>
@@ -23,8 +23,8 @@
                         <img ng-src="../../images/character1.png">
                     </div>
                 </div>
+                <p ng-if="!feed.friendsFromLastMacth" class="text-center">No friends yet<br></p>
                 <hr>
-                <p ng-if="!feed.friendsFromLastMacth">No friends yet</p>
                 <section class="lastVictory" ng-if="feed.lastVictory">
                     <div class="text-center" layout="row" layout-align="space-around center">
                         <div class="text-center">
@@ -47,7 +47,7 @@
                         </div>
                     </div>
                 </section>
-                <p ng-if="!feed.lastVictory">No Victory</p>
+                <p ng-if="!feed.lastVictory" class="text-center">No Victories<br><br></p>
                 <section class="lastDefet" ng-if="feed.lastDefet">
                     <div layout="row" layout-align="space-around center">
                         <div class="text-center">
@@ -70,7 +70,7 @@
                         </div>
                     </div>
                 </section>
-                <p ng-if="!feed.lastDefet">No losses</p> 
+                <p ng-if="!feed.lastDefet" class="text-center">No losses<br><br></p> 
                 <section class="teams">
                     <div layout="row" layout-align="center center">
                         <div class="text-center"><img src="../../images/birdLogo.png"><h4>86</h4></div>

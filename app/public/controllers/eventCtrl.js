@@ -2,6 +2,20 @@
 angular.module('LeagueOfLegends').controller('eventCtrl', function($scope, $http){
         
     $scope.newEvent = false;
+    $scope.joinedEvents = [];
+    
+    $scope.init = function(){
+        var joined = [];
+        var len = $scope.events.length;
+        for(var i=0; i<len; i++) {
+            if($scope.events[i].players.indexOf($scope.userName) > -1) {
+                if(joined.indexOf($scope.events[i].eventId)) {
+                    joined.push($scope.events[i].eventId);
+                }
+            }
+        }
+        $scope.joinedEvents = joined;
+    }
     
     $scope.createEvent = function(eventName, description, location) {
         var data = {
@@ -11,7 +25,6 @@ angular.module('LeagueOfLegends').controller('eventCtrl', function($scope, $http
         }
         $http.post('https://league-of-legends-service.herokuapp.com/createevent', data)
             .success(function(data){
-                //console.log(data.status);
                 $scope.showEvents();
                 $scope.toggleEevent();
         });
@@ -19,7 +32,6 @@ angular.module('LeagueOfLegends').controller('eventCtrl', function($scope, $http
     
     $scope.hideEvent = function(eventId) {
         $http.get('https://league-of-legends-service.herokuapp.com/hideevent/' + eventId).success(function(data){
-            //console.log(data);
             if(data.status == 'success') {
                 $scope.showEvents();                    
             }
@@ -28,15 +40,14 @@ angular.module('LeagueOfLegends').controller('eventCtrl', function($scope, $http
     
     $scope.startEvent = function(eventId) {
         $http.get('https://league-of-legends-service.herokuapp.com/startevent/' + eventId).success(function(data){
-            //console.log(data);
             $scope.hideEvent(eventId);
         });
     }
     
     $scope.joinEvent = function(eventId, userName) {
         $http.get('https://league-of-legends-service.herokuapp.com/joinevent/' + eventId + '/' + userName).success(function(data){
-            //console.log(data);
             if(data.status == 'success') {
+                $scope.joinedEvents.push(eventId);
                 $scope.showEvents();                    
             }
         });
@@ -45,15 +56,24 @@ angular.module('LeagueOfLegends').controller('eventCtrl', function($scope, $http
     
     $scope.leaveEvent = function(eventId, userName) {
         $http.get('https://league-of-legends-service.herokuapp.com/leaveevent/' + eventId + '/' + userName).success(function(data){
-            //console.log(data);
             if(data.status == 'success') {
-                $scope.showEvents();                    
+                var eventIndex = $scope.joinedEvents.indexOf(eventId);
+                if(eventIndex > -1) $scope.joinedEvents.splice(eventIndex, 1);
+                $scope.showEvents();   
             }
         });
     }
     
     $scope.toggleEevent = function() {
         $scope.newEvent = !$scope.newEvent;
+    }
+    
+    $scope.isInEvent = function(Id) {
+        if($scope.joinedEvents.indexOf(Id) > -1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 });
 

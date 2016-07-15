@@ -62,7 +62,6 @@ app.controller('mainCtrl', function($scope, $http, $cookies){
         };
         $http.post('https://league-of-legends-service.herokuapp.com/login', data)
             .success(function(data){
-                //console.log(data.status);
                 if(data.status === "success") {
                     $scope.userName = data.user;
                     $scope.isAdmin = data.isAdmin;
@@ -78,7 +77,12 @@ app.controller('mainCtrl', function($scope, $http, $cookies){
                     if(!$scope.isAdmin) {
                         $scope.showAchivements($scope.userName);
                         window.location.hash = '/feed';
-                    } else window.location.hash = '/events';
+                    } else {
+                        $scope.showEvents();
+                        window.location.hash = '/events';
+                        $scope.active = 3;
+                        $cookies.put("active",  3);
+                    }
                 }
                 else {
                     //show error

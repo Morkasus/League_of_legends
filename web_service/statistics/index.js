@@ -9,7 +9,7 @@ module.exports = class Statistics {
     showAchievements(userName,callback) {
     	User.findOne({ 'userName': userName}, function (err, user) {
             console.log(user);
-  			if (err) return handleError(err);
+  			if (err) callback({});
   			//contain win count. 
   			var userWin = user.wins;
   			//contain losses count.
@@ -48,7 +48,7 @@ module.exports = class Statistics {
     	var friendsArray = [];
     	//runing on winTeam array to take friends
         console.log(userName);
-        if(userName == "admin") return false;
+        if(lastGame.winTeam == undefined) return false;
     	for (var i = 0; i < lastGame.winTeam.length ; i++){
  			//if found user continue
  			if (lastGame.winTeam[i] == userName) continue;
@@ -65,6 +65,7 @@ module.exports = class Statistics {
     }
 
     function getLastVictory(games,userName) {
+        if(games == undefined) return false;
     	//runing on games (sorted) from the last game down
     	for (var i = games.length-1 ; i >= 0 ; i--){
     		if(games[i].winTeam.indexOf(userName) > -1){
@@ -76,6 +77,7 @@ module.exports = class Statistics {
     	return false;
     }
     function getLastDefet(games,userName) {
+        if(games == undefined) return false;
     	//runing on games (sorted) from the last game down
     	for (var i = games.length-1 ; i >= 0 ; i--){
     		if(games[i].loseTeam.indexOf(userName) > -1){

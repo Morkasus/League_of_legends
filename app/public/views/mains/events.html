@@ -1,4 +1,4 @@
-<div class="container text-center contactMe" ng-controller="eventCtrl">
+<div class="container text-center contactMe" ng-controller="eventCtrl" ng-init="init()">
     <div class="col-md-4 col-md-offset-4 contactPlace">
             <button ng-show="isAdmin" class="btn btn-success" ng-show="!newEvent" ng-click="toggleEevent()">New event</button>
             <form role="form" ng-show="newEvent">
@@ -24,8 +24,8 @@
                 <p>{{event.playerCounter}}</p>
                 <button ng-show="isAdmin" class="btn btn-danger" ng-click="hideEvent(event.eventId)">delete</button>
                 <button ng-show="isAdmin" class="btn btn-success" ng-click="startEvent(event.eventId)" ng-if="event.playerCounter == 6">start</button>
-                <button ng-show="!isAdmin" class="btn btn-success" ng-click="joinEvent(event.eventId, userName)">join</button>
-                <button ng-show="!isAdmin" class="btn btn-danger" ng-click="leaveEvent(event.eventId, userName)">leave</button>
+                <button ng-show="!isAdmin&&!isInEvent(event.eventId)" class="btn btn-success" ng-click="joinEvent(event.eventId, userName)">join</button>
+                <button ng-show="!isAdmin&&isInEvent(event.eventId)" class="btn btn-danger" ng-click="leaveEvent(event.eventId, userName)">leave</button>
                 <hr>
             </section>
         </section>
