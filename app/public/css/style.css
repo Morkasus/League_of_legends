@@ -107,6 +107,11 @@ main {
     margin-bottom: -5px;
 }
 
+.loginFailed {
+    color: #ff6057;
+    font-weight: bold;
+}
+
 .feed {
     color : #fff;
 }
@@ -153,8 +158,8 @@ main {
 }
 
 .friends img {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
 }
 
 .teams img{
@@ -415,8 +420,8 @@ feed hr {
     }
 
     .friends img {
-        width: 80px;
-        height: 80px;
+        width: 50px;
+        height: 50px;
     }
 
     .teams img{

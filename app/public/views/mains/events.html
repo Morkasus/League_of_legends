@@ -1,7 +1,7 @@
 <div class="container text-center contactMe" ng-controller="eventCtrl" ng-init="init()">
     <div>
 <!--            <button ng-show="isAdmin" class="btn btn-success" ng-show="!newEvent" ng-click="toggleEevent()">New event</button>-->
-            <img class="plusButton" src="../../images/plusButton.png" ng-show="isAdmin" ng-show="!newEvent" ng-click="toggleEevent()"/>
+            <img class="plusButton" src="images/plusButton.png" ng-show="isAdmin" ng-show="!newEvent" ng-click="toggleEevent()"/>
             <form class="eventForm" role="form" ng-show="newEvent"><br>
                 <div class="form-group">
                     <label for="eventName">Event Name</label>
@@ -26,7 +26,7 @@
                 <div class="eventTitle text-left" ng-style="{'background-image':'url({{event.eventImg}})'}"
                    ng-click="openDescription(event.eventId)">
                     <div class="xImage" >
-                        <img ng-show="isAdmin" src="../../images/x.png" ng-click="hideEvent(event.eventId)">
+                        <img ng-show="isAdmin" src="images/x.png" ng-click="hideEvent(event.eventId)">
                     </div>
                     <h1>{{event.eventName}}</h1>
                 </div>

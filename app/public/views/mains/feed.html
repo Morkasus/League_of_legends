@@ -23,69 +23,69 @@
                 <div class="friends" layout="row" layout-align="space-around center" ng-if="feed.friendsFromLastMacth">
                     <div class="text-center" ng-repeat="user in feed.friendsFromLastMacth">
                         <p>{{user}}</p>
-                        <img src="../../images/character2.png">
+                        <img ng-src="{{getFriendImage($index+1)}}">
                     </div>
                 </div>
                 <div layout="row" layout-align="center center" ng-if="!feed.friendsFromLastMacth" class="text-center"> 
-                    <div><img ng-src="../../images/noGamesFound.png"><br></div>
+                    <div><img ng-src="images/noGamesFound.png"><br></div>
                     <div><h2>No friends yet</h2></div>
                 </div>
                 <hr>
                 <section class="lastVictory" ng-if="feed.lastVictory">
                     <div class="text-center" layout="row" layout-align="space-around center">
                         <div class="text-center">
-                            <img class="statusImg" src="../../images/victoryLogo.png">
+                            <img class="statusImg" src="images/victoryLogo.png">
                             <h2>VICTORY</h2>       
                         </div>
                     </div>
                     <div class="team" layout="row" layout-align="space-around center">
                         <div class="text-center">
                             <p>team A</p>
-                            <img src="../../images/winTeam.png">
+                            <img src="images/winTeam.png">
                             <p>Winners</p>
                             <h3>{{feed.lastVictory.winScore}}</h3>
                         </div>
                         <div class="text-center">
                             <p>team B</p>
-                            <img src="../../images/lossesTeam.png">
+                            <img src="images/lossesTeam.png">
                             <p>Losess</p>
                             <h3>{{feed.lastVictory.loseScore}}</h3>
                         </div>
                     </div>
                 </section>
                 <div layout="row" layout-align="center center" ng-if="!feed.lastVictory" class="text-center">
-                    <div> <h2>No <img ng-src="../../images/NovictoryYet.png">Yet</h2></div>
+                    <div> <h2>No <img ng-src="images/NovictoryYet.png">Yet</h2></div>
                 </div>
                 <section class="lastDefet" ng-if="feed.lastDefet">
                     <div layout="row" layout-align="space-around center">
                         <div class="text-center">
-                            <img class="statusImg" src="../../images/DefeatLogo.png">
+                            <img class="statusImg" src="images/DefeatLogo.png">
                             <h2>DEFET</h2>    
                         </div>
                     </div>
                     <div class="team" layout="row" layout-align="space-around center">
                         <div class="text-center">
                             <p>team A</p>
-                            <img src="../../images/winTeam.png">
+                            <img src="images/winTeam.png">
                             <p>Winners</p>
                             <h3>{{feed.lastDefet.winScore}}</h3>
                         </div>
                         <div class="text-center">
                             <p>team B</p>
-                            <img src="../../images/lossesTeam.png">
+                            <img src="images/lossesTeam.png">
                             <p>Losess</p>
                             <h3>{{feed.lastDefet.loseScore}}</h3>
                         </div>
                     </div>
                 </section>
-                <div layout="row" layout-align="center center" ng-if="!feed.lastVictory" class="text-center">
-                    <div> <h2>No<img ng-src="../../images/noDefeatYet.png">Yet</h2></div>
+                <div layout="row" layout-align="center center" ng-if="!feed.lastDefet" class="text-center">
+                    <div> <h2>No<img ng-src="images/noDefeatYet.png">Yet</h2></div>
                 </div>
                 <section class="teams">
                     <div layout="row" layout-align="center center">
-                        <div class="text-center"><img src="../../images/birdLogo.png"><h4>86</h4></div>
-                        <div class="text-center myTeamLogo"><img src="../../images/drnLogo.png"><h4>87</h4></div>
-                        <div class="text-center"><img src="../../images/maskLogo.png"><h4>88</h4></div>
+                        <div class="text-center"><img src="images/birdLogo.png"><h4>86</h4></div>
+                        <div class="text-center myTeamLogo"><img src="images/drnLogo.png"><h4>87</h4></div>
+                        <div class="text-center"><img src="images/maskLogo.png"><h4>88</h4></div>
                     </div>
                 </section>
         </section>

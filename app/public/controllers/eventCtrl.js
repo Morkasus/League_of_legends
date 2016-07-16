@@ -1,10 +1,12 @@
 
+//handle the events
 angular.module('LeagueOfLegends').controller('eventCtrl', function($scope, $http){
         
     $scope.newEvent = false;
     $scope.joinedEvents = [];
     $scope.openEvents = [];
     
+    //check on each event players if user include there.
     $scope.init = function(){
         var joined = [];
         var len = $scope.events.length;
@@ -18,6 +20,7 @@ angular.module('LeagueOfLegends').controller('eventCtrl', function($scope, $http
         $scope.joinedEvents = joined;
     }
     
+    //create new event (admin option)
     $scope.createEvent = function(eventName, description, location) {
         var data = {
             'eventName': eventName,
@@ -31,6 +34,7 @@ angular.module('LeagueOfLegends').controller('eventCtrl', function($scope, $http
         });
     }
     
+    //hide(delete) event (admin option)
     $scope.hideEvent = function(eventId) {
         $http.get('https://league-of-legends-service.herokuapp.com/hideevent/' + eventId).success(function(data){
             if(data.status == 'success') {
@@ -39,12 +43,14 @@ angular.module('LeagueOfLegends').controller('eventCtrl', function($scope, $http
         });
     }
     
+    //start event (admin option)
     $scope.startEvent = function(eventId) {
         $http.get('https://league-of-legends-service.herokuapp.com/startevent/' + eventId).success(function(data){
             $scope.hideEvent(eventId);
         });
     }
     
+    //join to event (user option)
     $scope.joinEvent = function(eventId, userName) {
         $http.get('https://league-of-legends-service.herokuapp.com/joinevent/' + eventId + '/' + userName).success(function(data){
             if(data.status == 'success') {
@@ -54,7 +60,7 @@ angular.module('LeagueOfLegends').controller('eventCtrl', function($scope, $http
         });
     }
     
-    
+    //leave event (user option)
     $scope.leaveEvent = function(eventId, userName) {
         $http.get('https://league-of-legends-service.herokuapp.com/leaveevent/' + eventId + '/' + userName).success(function(data){
             if(data.status == 'success') {
@@ -69,6 +75,7 @@ angular.module('LeagueOfLegends').controller('eventCtrl', function($scope, $http
         $scope.newEvent = !$scope.newEvent;
     }
     
+    //check if user include in some event
     $scope.isInEvent = function(Id) {
         if($scope.joinedEvents.indexOf(Id) > -1) {
             return true;
@@ -77,6 +84,8 @@ angular.module('LeagueOfLegends').controller('eventCtrl', function($scope, $http
         }
     }
     
+    
+    //open event description 
     $scope.openDescription = function(eventId) {
         if($scope.openEvents.indexOf(eventId) > -1) {
             $scope.openEvents.splice($scope.openEvents.indexOf(eventId), 1);
@@ -86,17 +95,11 @@ angular.module('LeagueOfLegends').controller('eventCtrl', function($scope, $http
         }
     }
     
+    //check if event descrtipion open
     $scope.isOpen = function(eventId) {
         if($scope.openEvents.indexOf(eventId) > -1) return true;
         return false;
     }
-    
-    $scope.getEventImage = function() {
-        var randomImg = "../../images/event";
-        var tempNum = 0;
-        return randomImg + Math.floor((Math.random() * 3) + 1) + ".png";
-    }
-    
 });
 
 

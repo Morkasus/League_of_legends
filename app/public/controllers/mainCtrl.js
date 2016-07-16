@@ -1,5 +1,7 @@
 var app = angular.module('LeagueOfLegends', ['ngMaterial','ngRoute', 'ngCookies']);
 
+
+//Mains Router
 app.config(function($routeProvider){
     
         $routeProvider.when('/home', {
@@ -28,6 +30,7 @@ app.config(function($routeProvider){
 });
 
 
+//Main controller- contains registration and handle the data
 app.controller('mainCtrl', function($scope, $http, $cookies){
         
     $scope.isLogedIn = ($cookies.get("isLogedIn") === "true") || false;
@@ -48,6 +51,7 @@ app.controller('mainCtrl', function($scope, $http, $cookies){
         $cookies.put("active",  active);
     }
     
+    //InsertKey WebService - check if this key exists
     $scope.insertKey = function(key, callback){
 
         $http.get('https://league-of-legends-service.herokuapp.com/insertkey/'+key).success(function(data){
@@ -55,6 +59,7 @@ app.controller('mainCtrl', function($scope, $http, $cookies){
         });
     }
         
+    //Login WebService
     this.login = function(userName, password){
         var data = {
             'username': userName,
@@ -76,7 +81,7 @@ app.controller('mainCtrl', function($scope, $http, $cookies){
                     
                     if(!$scope.isAdmin) {
                         $scope.imgUrl = data.imgUrl;
-                        $cookies.put("imgUrl",  data.imgUrl);
+                        $cookies.put("imgUrl",  $scope.imgUrl);
                         $scope.showAchivements($scope.userName);
                         window.location.hash = '/feed';
                     } else {
@@ -85,13 +90,16 @@ app.controller('mainCtrl', function($scope, $http, $cookies){
                         $scope.active = 3;
                         $cookies.put("active",  3);
                     }
+                     $scope.failed = "";
                 }
                 else {
-                    //show error
+                    $scope.failed = "Failed, please try again";
+                    console.log($scope.failed);
                 }
         });
     }
     
+    //Logout WebService
     $scope.logout = function(){
         $scope.isLogedIn = false;
         $scope.active = 4;
@@ -104,13 +112,10 @@ app.controller('mainCtrl', function($scope, $http, $cookies){
         $cookies.put("active",  4);
     }
     
+    //CreateUser WebService
+    //  - check if the key exists 
+    //      - if exist , created the new user
     $scope.createUser = function(userName, pass, mail, firstName, lastName, key) {
-        console.log(userName);
-        console.log(pass);
-        console.log(mail);
-        console.log(firstName);
-        console.log(lastName);
-        console.log(key);
         $scope.insertKey(key, function(res) {
             if(res.status == "success") {
                 var data = {
@@ -127,18 +132,20 @@ app.controller('mainCtrl', function($scope, $http, $cookies){
                             location.reload(); 
                         }
                         else {
-                            //failed create new user error
+                            $scope.failed = "There were one or more errors in your submission, try again";
+                            console.log($scope.failed);
                         }
                 });
             } 
             else {
-                //key not exist
+                $scope.failed = "Key don't exist, please try again";
+                console.log($scope.failed);
             }
         });
     }
     
+    //Get all the events data
     $scope.showEvents = function() {
-        
         $scope.changeActive(3);
         $http.get('https://league-of-legends-service.herokuapp.com/showevents').success(function(data){
             $scope.events = data;
@@ -147,6 +154,7 @@ app.controller('mainCtrl', function($scope, $http, $cookies){
         });
     }
     
+    //Get all the feed data
     $scope.showAchivements = function(userName) {
         $scope.changeActive(1);
         $http.get('https://league-of-legends-service.herokuapp.com/showachievements/'+userName).success(function(data){
@@ -155,11 +163,10 @@ app.controller('mainCtrl', function($scope, $http, $cookies){
         });
     }
     
-    $scope.getMonsterPicture = function() {
-        var randomImg = "../../images/character";
-        var tempNum = 0;
-        return randomImg + Math.floor((Math.random() * 5) + 1) + ".png";
-        console.log(randomImg + Math.floor((Math.random() * 5) + 1) + ".png");
+    $scope.getFriendImage = function(friendId) {
+        var path = "images/character" + friendId + ".png";
+        return path; 
     }
+    
     
 });
