@@ -268,7 +268,7 @@ msg - "Event not exist" | "the player list is empty" | "userName" + " not includ
 
 ### Show achievements (GET): 
 
-`https://league-of-legends-service.herokuapp.com/leaveevent/:eventId/:userName`
+`https://league-of-legends-service.herokuapp.com/showachievements/:userName`
 
 params: 
 
@@ -279,28 +279,63 @@ JSON response example:
 success
 ```
 {
-    "userName": "daniels",
-    "gamesCounter": 0,
-    "wins": 3,
-    "loses": 3,
-    "games": [
-        18,
-        16,
-        17,
-        13,
-        22,
-        26
-    ]
-}
-```
-failed
-```
-{
-    "status": "failed"
+    userWin: 3,
+    userLoses: 3,
+    lastVictory: {
+        eventId: 22,
+        winScore: 973,
+        loseScore: 210,
+        loseTeam: [
+        "noamr",
+        "yossia",
+        "itayn"
+        ],
+        winTeam: [
+        "daniels",
+        "mork",
+        "orb"
+        ]
+    },
+    lastDefet: {
+        eventId: 26,
+        winScore: 759,
+        loseScore: 353,
+        loseTeam: [
+        "mork",
+        "itayn",
+        "daniels"
+        ],
+        winTeam: [
+        "orb",
+        "yossia",
+        "noamr"
+        ]
+    },
+    lastGame: {
+        eventId: 26,
+        winScore: 759,
+        loseScore: 353,
+        loseTeam: [
+        "mork",
+        "itayn",
+        "daniels"
+        ],
+        winTeam: [
+        "orb",
+        "yossia",
+        "noamr"
+        ]
+        },
+        friendsFromLastMacth: [
+        "orb",
+        "yossia",
+        "noamr",
+        "itayn",
+        "daniels"
+        ]
 }
 ```
 
-
-## Author
+## Authors
 Mor Kasus & Yossi Azoulay 
 
