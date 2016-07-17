@@ -164,17 +164,39 @@ params:
 
 
 JSON response example:
-success
 ```
-{
-  'hide':false
-}
-```
-failed
-```
-{
-    "status": "failed"
-}
+[
+    {
+        eventId: 14,
+        eventName: "OMG World Cup Are U IN ?!",
+        playerCounter: 4,
+        location: "USA MA rm3# ds street",
+        eventImg: "images/event1.png",
+        description: "3v3 battles Two teams of powerful champions, each with a unique design and playstyle, battle head-to-head across multiple battlefields",
+        started: false,
+        players: [
+            "daniels",
+            "itayn",
+            "yossia",
+            "mork"
+        ]
+    },
+    {
+        eventId: 15,
+        eventName: "Fight For honor",
+        playerCounter: 4,
+        location: "Rehovot Ihakov38 st msi Date: Tuesday, 14 June 2016 Time: 3:00 GMT+3",
+        eventImg: "images/event2.png",
+        description: "3v3 battles Two teamsJoin the world's largest online gaming community: make friends, form teams and battle tens of millions of opponents from countries across the globe, then exchange strats on reddit, YouTube, the forums and beyond",
+        started: false,
+        players: [
+            "daniels",
+            "itayn",
+            "yossia",
+            "mork"
+        ]
+    }
+]
 ```
 
 
