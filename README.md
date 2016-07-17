@@ -112,23 +112,13 @@ params:
 
     eventId
 
-
 JSON response example:
 success
 ```
 {
-  "eventId": 17,
-  "hide": true
+  "status": "success"
 }
 ```
-failed
-```
-{
-    "eventId": 17,
-    "hide": false
-}
-```
-
 
 ###  Start event (GET): 
 
@@ -143,15 +133,14 @@ JSON response example:
 success
 ```
 {
-  "eventId": 17,
-  "started": true,
+  "status": "success"
 }
 ```
 failed
 ```
 {
-    "eventId": 17,
-    "started": false
+    status: "failed",
+    message: "failed: can't save the game result"
 }
 ```
 
@@ -213,28 +202,28 @@ JSON response example:
 success
 ```
 {
-  "eventId": 14,
-  "playerCounter": 6,
-      "players": [
-        "mork",
-        "noamr",
+    status: "success",
+    msg: "ok",
+    players: [
         "daniels",
+        "itayn",
         "yossia",
-        "orb",
-        "itayn"
-    ]
+        "mork",
+        "noamr"
+    ],
+    playerCounter: 5
 }
 ```
 failed
 ```
 {
-    "status": "failed"
-    ("Event not exist")
-    ("User already joined to this event")
-    ("There is no place to join")
+    status: "failed",
+    msg: "Event not exist",
+    players: [ ],
+    playerCounter: 0
 }
 ```
-
+msg - "Event not exist"  | "userName" + " already include in the player list".
 
 
 ### Leave event (GET): 
@@ -250,28 +239,32 @@ JSON response example:
 success
 ```
 {
-    "eventId": 14,
-      "playerCounter": 5,
-      "players": [
-        "mork",
-        "noamr",
+    status: "success",
+    msg: "ok",
+    players: [
         "daniels",
+        "itayn",
         "yossia",
-        "orb"
-    ]
-    
+        "mork"
+    ],
+    playerCounter: 4
 }
 ```
 failed
 ```
 {
-    "status": "failed"
-    ("Event not exist")
-    ("the player list is empty")
-    (userName + " not include in the player list")
+    status: "failed",
+    msg: "noamr not include in the player list",
+    players: [
+        "daniels",
+        "itayn",
+        "yossia",
+        "mork"
+    ],
+    playerCounter: 4
 }
 ```
-
+msg - "Event not exist" | "the player list is empty" | "userName" + " not include in the player list".
 
 ### Show achievements (GET): 
 
