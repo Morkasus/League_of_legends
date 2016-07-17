@@ -1,4 +1,4 @@
-# League_of_legends
+# League of legends
 ## API
 
 [WebService](https://league-of-legends-service.herokuapp.com)
